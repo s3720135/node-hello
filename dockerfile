@@ -1,8 +1,9 @@
  # syntax=docker/dockerfile:1
-FROM node:16.9.1
-ENV NODE_ENV=development
-WORKDIR /TakeHome2
-COPY ["package.json", "package-lock.json", "./"]
+FROM node:12
+WORKDIR /app
+COPY package*.json ./
 RUN npm install
 COPY . .
-CMD ["node", "src/index.js"]
+ENV PORT=3000
+EXPOSE 3000
+CMD ["npm", "start"]
